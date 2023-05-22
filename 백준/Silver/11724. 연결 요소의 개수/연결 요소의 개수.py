@@ -27,8 +27,6 @@ def DFS(x):
         if not visited[node]:
             DFS(node)
 
-cnt = 0
-
 for i in range(1, N+1):
     if not visited[i]:
         DFS(i)
