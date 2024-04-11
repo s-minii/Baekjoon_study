@@ -7,9 +7,11 @@ num_arr = list(map(int, input().split()))
 #각 자릿수의 합을 구하는 함수
 def digit_sum(x):
     sum = 0
-    while x > 0:
-        sum += x % 10
-        x = x // 10
+    #while x > 0:
+    #    sum += x % 10
+    #    x = x // 10
+    for i in str(x):
+        sum+= int(i)
     return sum
 
 max = -2147000000
