@@ -4,7 +4,12 @@ sys.stdin = open("input.txt", "rt")
 N = int(input())
 
 def reverse(x):
-    return int(str(x)[::-1])
+    res = 0
+    while x > 0:
+        t = x % 10
+        res = res*10+t
+        x=x//10
+    return res
 
 def isPrime(x):
     if x == 1:
