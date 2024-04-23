@@ -4,16 +4,24 @@ sys.stdin = open("input.txt", "rt")
 n, m = map(int, input().split())
 a = list(map(int, input().split()))
 
-count = 0
-sum = 0
-end = 0
+lt = 0
+rt = 1
+tot = a[0]
+cnt = 0
 
-for i in range(n):
-    while sum < m and end < n:
-        sum += a[end]
-        end += 1
-    if sum == m:
-        count += 1
-    sum -= a[i]
+while True:
+    if tot < m:
+        if rt < n:
+            tot +=a[rt]
+            rt += 1
+        else:
+            break
+    elif tot == m:
+        cnt += 1
+        tot -=a[lt]
+        lt += 1
+    else:
+        tot -= a[lt]
+        lt += 1
 
-print(count)
+print(cnt)
