@@ -2,36 +2,39 @@ import sys
 sys.stdin = open("input.txt", "rt")
 
 N = int(input())
-grid = []
+arr = []
 max_sum = 0
+largest = -2147000000
 
 for _ in range(N):
     row = list(map(int, input().split()))
-    grid.append(row)
+    arr.append(row)
 
-
-# 각 행의 합 계산
+#행, 열의 합
 for i in range(N):
-    row_sum = sum(grid[i])
-    if row_sum > max_sum:
-        max_sum = row_sum
+    sum1 = 0
+    sum2 = 0
 
-# 각 열의 합 계산
-for i in range(N):
-    col_sum = 0
     for j in range(N):
-        col_sum += grid[j][i]
-    if col_sum > max_sum:
-        max_sum = col_sum
+        sum1 += arr[i][j] #행
+        sum2 += arr[j][i] #열
 
-# 두 대각선의 합 계산
-left_diagonal_sum = 0
-right_diagonal_sum = 0
+    if sum1 > largest:
+        largest = sum1
+    if sum2 > largest:
+        largest = sum2
+
+sum1 = 0
+sum2 = 0
+
+#대각선 합
 for i in range(N):
-    left_diagonal_sum += grid[i][i]
-    right_diagonal_sum += grid[i][N-i-1]
+    sum1 += arr[i][i]
+    sum2 += arr[i][N-i-1]
 
-# 대각선 합 중 최대값
-max_sum = max(max_sum, left_diagonal_sum, right_diagonal_sum)
+if sum1 > largest:
+    largest = sum1
+if sum2 > largest:
+    largest = sum2
 
-print(max_sum)
+print(largest)
